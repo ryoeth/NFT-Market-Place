@@ -8,7 +8,7 @@ function App() {
   );
 }
 
-export default App;
+export default App;y
 //     "@metamask/detect-provider": "^1.2.0",
 //     "@openzeppelin/contracts": "^4.3.1",
 //     "babel-polyfill": "6.26.0",
