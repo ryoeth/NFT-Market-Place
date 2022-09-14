@@ -1,4 +1,5 @@
-const KryptoBird = artifacts.require("../src/contracts/KryptoBirdz.sol");
+const KryptoBird = artifacts.require("KryptoBirdz");
+
 module.exports = function (deployer) {
     deployer.deploy(KryptoBird);
 }
