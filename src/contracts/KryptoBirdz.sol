@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract KryptoBird {
+contract KryptoBirdz {
     string public name;
     string public symbol;
 
