@@ -27,7 +27,7 @@ contract ERC721 {
         return _OwnedTokenCounts[_owner];
     }
 
-    function ownerOf(address _tokenId) public view returns (address) {
+    function ownerOf(uint _tokenId) public view returns (address) {
         address owner = _tokenOwner[_tokenId];
         require(owner != address(0), "Owner value is null");
         return owner;
