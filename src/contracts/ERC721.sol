@@ -12,7 +12,7 @@ contract ERC721 {
         uint indexed tokenId
     );
 
-    function _mint(uint tokenId, address to) internal {
+    function _mint(uint tokenId, address to) internal virtual {
         require(to != address(0), "Address is 0");
         require(!_exists(tokenId), "Token already minted");
 
@@ -20,6 +20,17 @@ contract ERC721 {
         _OwnedTokenCounts[to]++;
 
         emit Transfer(address(0), to, tokenId);
+    }
+
+    function balanceOf(address _owner) public view returns (uint) {
+        require(_owner != address(0), "Owner value is null");
+        return _OwnedTokenCounts[_owner];
+    }
+
+    function ownerOf(address _tokenId) public view returns (address) {
+        address owner = _tokenOwner[_tokenId];
+        require(owner != address(0), "Owner value is null");
+        return owner;
     }
 
     function _exists(uint tokenId) internal view returns (bool) {
