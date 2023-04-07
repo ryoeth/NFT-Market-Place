@@ -6,8 +6,11 @@ import "./ERC721.sol";
 contract ERC721Ennumerator is ERC721 {
     uint256[] private _allTokens;
 
+    // tokenId to index in _allTokens array
     mapping(uint => uint) private _allTokensIndex;
+    // owner to array of all tokens owned by him
     mapping(address => uint256[]) private _ownedTokens;
+    // tokenId to index of owner token list (above)
     mapping(uint => uint) private _ownedTokensIndex;
 
     function totatSupply() external view returns (uint) {
@@ -27,6 +30,8 @@ contract ERC721Ennumerator is ERC721 {
     }
 
     function _addTokensToAllTokensEnnumeration(uint tokenID) private {
+        _allTokensIndex=_allTokens.length;
         _allTokens.push(tokenID);
+
     }
 }
