@@ -13,7 +13,7 @@ contract ERC721Ennumerator is ERC721 {
     // tokenId to index of owner token list (above)
     mapping(uint => uint) private _ownedTokensIndex;
 
-    function totatSupply() external view returns (uint) {
+    function totatSupply() internal view returns (uint) {
         return _allTokens.length;
     }
 
@@ -27,11 +27,31 @@ contract ERC721Ennumerator is ERC721 {
     function _mint(uint256 tokenID, address to) internal override(ERC721) {
         super._mint(tokenID, to);
         _addTokensToAllTokensEnnumeration(tokenID);
+        _addTokensToOwnerTokensEnnumeration(tokenID, to);
+    }
+
+    function _addTokensToOwnerTokensEnnumeration(
+        uint tokenID,
+        address to
+    ) private {
+        _ownedTokens[to].push(tokenID);
+        _ownedTokensIndex[tokenID] = _ownedTokens[to].length;
+    }
+
+    function tokenByIndex(uint index) public view returns (uint) {
+        require(index < totatSupply(), "Not enough tokens");
+        return _allTokens[index];
+    }
+
+    function tokenOfOwnerByIndex(
+        address owner,
+        uint index
+    ) public view returns (uint) {
+        return _ownedTokens[owner][index];
     }
 
     function _addTokensToAllTokensEnnumeration(uint tokenID) private {
-        _allTokensIndex=_allTokens.length;
+        _allTokensIndex[tokenID] = _allTokens.length;
         _allTokens.push(tokenID);
-
     }
 }
