@@ -47,6 +47,7 @@ contract ERC721Ennumerator is ERC721 {
         address owner,
         uint index
     ) public view returns (uint) {
+        require(index < balanceOf(owner), "Owner Index out of bonds ");
         return _ownedTokens[owner][index];
     }
 

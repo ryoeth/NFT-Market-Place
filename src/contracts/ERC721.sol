@@ -6,6 +6,7 @@ import "./ERC721.sol";
 contract ERC721 {
     mapping(uint => address) private _tokenOwner;
     mapping(address => uint) private _OwnedTokenCounts;
+    mapping(uint => address) private _tokenApproval;
     event Transfer(
         address indexed from,
         address indexed to,
@@ -37,4 +38,18 @@ contract ERC721 {
         address owner = _tokenOwner[tokenId];
         return owner != address(0);
     }
+
+    function _transferFrom(address _from, address _to, uint tokenID) internal {
+        require(_to != address(0), "reciever address is null");
+        require(ownerOf(tokenID) == _from, "owner of token not correct");
+        _tokenOwner[tokenID] = _to;
+        _OwnedTokenCounts[_to]++;
+        _OwnedTokenCounts[_from]--;
+        emit Transfer(_from, _to, tokenID);
+    }
+
+    function transferFrom(address _from, address _to, uint tokenID) public {
+        _transferFrom(_from, _to, tokenID);
+    }
+
 }
