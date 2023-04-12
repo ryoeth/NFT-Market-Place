@@ -12,6 +12,11 @@ contract ERC721 {
         address indexed to,
         uint indexed tokenId
     );
+    event Approval(
+        address indexed owner,
+        address indexed approved,
+        uint indexed tokenId
+    );
 
     function _mint(uint tokenId, address to) internal virtual {
         require(to != address(0), "Address is 0");
@@ -52,4 +57,11 @@ contract ERC721 {
         _transferFrom(_from, _to, tokenID);
     }
 
+    function approve(address _to, uint tokenId) public {
+        address owner = ownerOf(tokenId);
+        require(_to != owner, "Error approval to current owner");
+        require(msg.sender == owner, "Currrent caller is not the owner");
+        _tokenApproval[tokenId] = _to;
+        emit Approval(owner, _to, tokenId);
+    }
 }
