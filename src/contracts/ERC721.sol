@@ -54,6 +54,7 @@ contract ERC721 {
     }
 
     function transferFrom(address _from, address _to, uint tokenID) public {
+        require(isApprovedOrOwner(msg.sender, tokenID));
         _transferFrom(_from, _to, tokenID);
     }
 
@@ -63,5 +64,14 @@ contract ERC721 {
         require(msg.sender == owner, "Currrent caller is not the owner");
         _tokenApproval[tokenId] = _to;
         emit Approval(owner, _to, tokenId);
+    }
+
+    function isApprovedOrOwner(
+        address spender,
+        uint tokenId
+    ) internal view returns (bool) {
+        require(_exists(tokenId), "token doesnt exsists");
+        address owner = ownerOf(tokenId);
+        return (spender == owner);
     }
 }
