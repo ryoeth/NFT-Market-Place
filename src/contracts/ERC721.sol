@@ -54,6 +54,7 @@ contract ERC721 {
     }
 
     function transferFrom(address _from, address _to, uint tokenID) public {
+        // checking if msg.sender and owner of tokenID are same
         require(isApprovedOrOwner(msg.sender, tokenID));
         _transferFrom(_from, _to, tokenID);
     }
