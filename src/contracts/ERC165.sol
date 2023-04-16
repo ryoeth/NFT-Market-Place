@@ -3,10 +3,6 @@ pragma solidity ^0.8.0;
 
 import "./Interfaces/IERC165.sol";
 
-// interface IERC165 {
-//     function supportsInterface(bytes4 interfaceId) external view returns (bool);
-// }
-
 contract ERC165 is IERC165 {
     mapping(bytes4 => bool) private supportedInterfaces;
 

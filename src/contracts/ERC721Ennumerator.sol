@@ -2,8 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "./ERC721.sol";
+import "./Interfaces/IERC721Enumerable.sol";
 
-contract ERC721Ennumerator is ERC721 {
+contract ERC721Ennumerator is ERC721, IERC721Enumerable {
     uint256[] private _allTokens;
 
     // tokenId to index in _allTokens array
@@ -17,12 +18,18 @@ contract ERC721Ennumerator is ERC721 {
         return _allTokens.length;
     }
 
-    // function tokenByIndex(uint _index) external view returns (uint);
+    function tokenByIndex(uint index) public view returns (uint) {
+        require(index < totatSupply(), "Not enough tokens");
+        return _allTokens[index];
+    }
 
-    // function tokenOfOwnerByIndex(
-    //     address owner,
-    //     uint _index
-    // ) external view returns (uint);
+    function tokenOfOwnerByIndex(
+        address owner,
+        uint index
+    ) public view returns (uint) {
+        require(index < balanceOf(owner), "Owner Index out of bonds ");
+        return _ownedTokens[owner][index];
+    }
 
     function _mint(uint256 tokenID, address to) internal override(ERC721) {
         super._mint(tokenID, to);
@@ -36,19 +43,6 @@ contract ERC721Ennumerator is ERC721 {
     ) private {
         _ownedTokens[to].push(tokenID);
         _ownedTokensIndex[tokenID] = _ownedTokens[to].length;
-    }
-
-    function tokenByIndex(uint index) public view returns (uint) {
-        require(index < totatSupply(), "Not enough tokens");
-        return _allTokens[index];
-    }
-
-    function tokenOfOwnerByIndex(
-        address owner,
-        uint index
-    ) public view returns (uint) {
-        require(index < balanceOf(owner), "Owner Index out of bonds ");
-        return _ownedTokens[owner][index];
     }
 
     function _addTokensToAllTokensEnnumeration(uint tokenID) private {

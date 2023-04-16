@@ -2,21 +2,12 @@
 pragma solidity ^0.8.0;
 
 import "./ERC165.sol";
+import "./Interfaces/IERC721.sol";
 
-contract ERC721 {
+contract ERC721 is ERC165, IERC721{
     mapping(uint => address) private _tokenOwner;
     mapping(address => uint) private _OwnedTokenCounts;
     mapping(uint => address) private _tokenApproval;
-    event Transfer(
-        address indexed from,
-        address indexed to,
-        uint indexed tokenId
-    );
-    event Approval(
-        address indexed owner,
-        address indexed approved,
-        uint indexed tokenId
-    );
 
     function _mint(uint tokenId, address to) internal virtual {
         require(to != address(0), "Address is 0");
