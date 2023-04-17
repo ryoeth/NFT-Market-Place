@@ -7,6 +7,14 @@ import "./Interfaces/IERC721Enumerable.sol";
 contract ERC721Ennumerator is ERC721, IERC721Enumerable {
     uint256[] private _allTokens;
 
+    constructor() {
+        _registerInterface(
+            calcFingerPrint("totalSupply(bytes4)") ^
+                calcFingerPrint("tokenByIndex(bytes4)") ^
+                calcFingerPrint("tokenOfOwnerByIndex(bytes4)")
+        );
+    }
+
     // tokenId to index in _allTokens array
     mapping(uint => uint) private _allTokensIndex;
     // owner to array of all tokens owned by him

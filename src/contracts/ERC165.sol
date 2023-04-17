@@ -7,7 +7,7 @@ contract ERC165 is IERC165 {
     mapping(bytes4 => bool) private supportedInterfaces;
 
     constructor() {
-        _registerInterface(calcFingerPrint("supportsInterface"));
+        _registerInterface(calcFingerPrint("supportsInterface(bytes4)"));
     }
 
     function supportsInterface(
