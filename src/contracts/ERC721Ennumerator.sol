@@ -14,12 +14,12 @@ contract ERC721Ennumerator is ERC721, IERC721Enumerable {
     // tokenId to index of owner token list (above)
     mapping(uint => uint) private _ownedTokensIndex;
 
-    function totatSupply() internal view returns (uint) {
+    function totalSupply() public view returns (uint) {
         return _allTokens.length;
     }
 
     function tokenByIndex(uint index) public view returns (uint) {
-        require(index < totatSupply(), "Not enough tokens");
+        require(index < totalSupply(), "Not enough tokens");
         return _allTokens[index];
     }
 
