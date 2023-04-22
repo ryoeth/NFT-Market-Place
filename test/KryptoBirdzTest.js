@@ -1,4 +1,4 @@
-const {assert} = require('chai');
+const { assert } = require('chai');
 const Kryptobird = artifacts.require('./KryptoBirdz');
 
 contract('KryptoBirdz', () => {
@@ -19,6 +19,17 @@ contract('KryptoBirdz', () => {
         it('has a symbol', async () => {
             const symbol = await contract.SymbolGetter();
             assert.equal(symbol, 'KBIRDZ');
+        })
+    })
+    describe('minting', async () => {
+        it('creates a new token', async () => {
+            const result = await contract.mint('pigeon');
+            const totalSupply = await contract.totalSupply();
+            assert.equal(totalSupply, 1);
+
+            const event = result.logs[0].args;
+            assert.equal(event.from, 0x000000000000000000000000000000000000000000, 'from = contract addr');
+            assert.equal(event.to, accounts[0], 'to is = msg.sender');
         })
     })
 })
