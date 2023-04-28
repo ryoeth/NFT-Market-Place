@@ -73,8 +73,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -87,8 +86,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -101,8 +99,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -121,8 +118,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -172,8 +168,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -192,8 +187,7 @@
         }
       ],
       "stateMutability": "pure",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -212,8 +206,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -232,8 +225,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -252,8 +244,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -277,8 +268,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [],
@@ -291,8 +281,7 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function",
-      "constant": true
+      "type": "function"
     },
     {
       "inputs": [
@@ -17793,13 +17782,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x6c8e55AD4889b08f3e9C798B7551e172A5f0650C",
-      "transactionHash": "0x81a70b7ce59f2b810ca57208c1f8318aa56b5854a4c79791e35785e0b7c80ee3"
+      "address": "0x8aA91bFD79CF54A55CC8c565a73CE6E1f277c65a",
+      "transactionHash": "0x8c02a9d5f714cedcba18660c310bab332c560b6b2b9c678fac7a64ac1ecd63fc"
     }
   },
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-04-22T06:46:18.287Z",
-  "networkType": "ethereum",
+  "updatedAt": "2023-04-28T07:32:41.966Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

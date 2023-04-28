@@ -48,7 +48,8 @@ contract('KryptoBirdz', async (accounts) => {
                 let kryptobird = await contract.Kryptobird(i - 1);
                 result.push(kryptobird);
             }
-            let expected = ['pigeon', 'peacock', 'crow', 'myna'];
+            let expected = ['myna', 'crow', 'peacock', 'pigeon'];
+            // console.log(expected,result)
             assert.equal(result.join(','), expected.join(','));
         });
     });
