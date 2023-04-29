@@ -9,8 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@metamask/detect-provider": "^1.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -20,6 +18,10 @@
     "chai-as-promised": "^7.1.1",
     "chai-bignumber": "^3.0.0",
     "mdb-ui-kit": "^4.4.0",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.4",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
     "solc": "0.8.0",
     "truffle": "^5.3.0",
     "web-vitals": "^2.1.4",
