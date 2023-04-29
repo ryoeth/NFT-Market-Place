@@ -1,44 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect } from 'react'
 import detectEthereumProvider from '@metamask/detect-provider'
 import Web3 from 'web3'
 import KryptoBird from './abis/KryptoBirdz.json'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0);
-  async function LoadWeb3() {
-    const provider = await detectEthereumProvider();
-    if (provider) {
-      console.log(provider,'ethereum wallet is connected');
-      window.web3 = new Web3(provider);
+
+  let accounts;
+  useEffect(() => {
+    
+    async function LoadWeb3() {
+      const provider = await detectEthereumProvider();
+      if (provider) {
+        console.log('ethereum wallet is connected');
+        window.web3 = new Web3(provider);
+      }
+      else {
+        console.log('no ethereum wallet is connected');
+      }
     }
-    else {
-      console.log('no ethereum wallet is connected');
+
+    async function LoadBlockchainData() {
+      console.log(await window.web3);
+      const acc = await window.web3.eth.getAccounts();
+      return acc;
     }
-  }
-  LoadWeb3();
+
+    async function call() {
+      const x = await LoadWeb3();
+      accounts = await LoadBlockchainData();
+      console.log(accounts);
+    }
+    call();
+  })
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
