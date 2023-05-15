@@ -39,9 +39,9 @@ function App() {
         const abi = KryptoBird.abi;
         const networkDataAdress = networkData.address;
         const contract = new window.web3.eth.Contract(abi, networkDataAdress);
-        console.log(contract)
       }
-      setAccountDetail((accountDetail) => ({ ...accountDetail, ...updatedAccount }))
+      setAccountDetail(accountDetails=> ({...accountDetails, accounts: data[0]}))
+      console.log(accountDetail)
     }
 
     call();
