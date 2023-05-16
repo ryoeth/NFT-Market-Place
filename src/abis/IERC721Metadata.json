@@ -28,7 +28,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"NameGetter\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SymbolGetter\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"NameGetter()\":{\"notice\":\"A descriptive name for a collection of NFTs in this contract\"},\"SymbolGetter()\":{\"notice\":\"An abbreviated name for NFTs in this contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/src/contracts/Interfaces/IERC721Metadata.sol\":\"IERC721Metadata\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/src/contracts/Interfaces/IERC721Metadata.sol\":{\"keccak256\":\"0xc7a00487fa6ee501e9ac8c0f931a81b60c959ac8044290768bcfb99bd51e4454\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4001c54946f6e5cc1a9851ef14d06d420d4e84029bebc10d91db28c816239259\",\"dweb:/ipfs/QmYFkdKcERXa25Gy2pzFyQ9YbkSp7CzkcteoNDgYHyF9L7\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"NameGetter\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"SymbolGetter\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"_symbol\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"NameGetter()\":{\"notice\":\"A descriptive name for a collection of NFTs in this contract\"},\"SymbolGetter()\":{\"notice\":\"An abbreviated name for NFTs in this contract\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/src/contracts/Interfaces/IERC721Metadata.sol\":\"IERC721Metadata\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/src/contracts/Interfaces/IERC721Metadata.sol\":{\"keccak256\":\"0xc7a00487fa6ee501e9ac8c0f931a81b60c959ac8044290768bcfb99bd51e4454\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4001c54946f6e5cc1a9851ef14d06d420d4e84029bebc10d91db28c816239259\",\"dweb:/ipfs/QmYFkdKcERXa25Gy2pzFyQ9YbkSp7CzkcteoNDgYHyF9L7\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -200,18 +200,19 @@
         ],
         "scope": 710,
         "src": "60:321:8",
-        "usedErrors": []
+        "usedErrors": [],
+        "usedEvents": []
       }
     ],
     "src": "33:348:8"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.19+commit.7dd6d404.Emscripten.clang"
+    "version": "0.8.20+commit.a1b79de6.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-04-28T07:32:41.953Z",
+  "updatedAt": "2023-05-16T09:57:43.721Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

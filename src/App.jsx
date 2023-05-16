@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 function App() {
 
-  const [accountDetail, setAccountDetail] = useState({ accounts: null, networkId: null });
+  const [accountDetail, setAccountDetail] = useState({ accounts: null, networkId: null, totalSupply: 0 });
 
   useEffect(() => {
 
@@ -27,21 +27,27 @@ function App() {
       // console.log(await window.web3);
       const acc = await window.web3.eth.getAccounts();
       const networkId = await window.web3.eth.net.getId();
+      console.log(networkId)
       return [acc[0], networkId];
     }
 
     async function call() {
       await LoadWeb3();
       let data = await LoadBlockchainData();
-      const updatedAccount = { accounts: data[0] }
       const networkData = KryptoBird.networks[data[1]];
       if (networkData) {
         const abi = KryptoBird.abi;
         const networkDataAdress = networkData.address;
         const contract = new window.web3.eth.Contract(abi, networkDataAdress);
+        const totalSupply = await contract.methods.totalSupply().call();
+        const updatedAccount = { accounts: data[0], totalSupply: totalSupply }
+        setAccountDetail(accountDetails => ({ ...accountDetails, ...updatedAccount }))
+        let result = [];
+        for (let i = 1; i < totalSupply; i++) {
+          const KryptoBird = await contract.KryptoBird(i - 1);
+          result.push(KryptoBird);
+        }
       }
-      setAccountDetail(accountDetails=> ({...accountDetails, accounts: data[0]}))
-      console.log(accountDetail)
     }
 
     call();
