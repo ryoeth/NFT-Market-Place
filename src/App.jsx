@@ -50,7 +50,7 @@ function App() {
         for (let i = 1; i < totalSupply; i++) {
           result.push(await contract.KryptoBird(i - 1).call());
         }
-
+        setAccountDetail(accountDetails => ({ ...accountDetails.KryptoBirdArray, ...result }))
       }
     }
 
