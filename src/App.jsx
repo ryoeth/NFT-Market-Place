@@ -8,7 +8,11 @@ import { useState } from 'react'
 
 function App() {
 
-  const [accountDetail, setAccountDetail] = useState({ accounts: null, networkId: null, totalSupply: 0 });
+  const [accountDetail, setAccountDetail] = useState({ accounts: null, 
+                                                       networkId: null, 
+                                                       totalSupply: 0, 
+                                                       KryptoBirdArray: []
+                                                    });
 
   useEffect(() => {
 
@@ -44,9 +48,9 @@ function App() {
         setAccountDetail(accountDetails => ({ ...accountDetails, ...updatedAccount }))
         let result = [];
         for (let i = 1; i < totalSupply; i++) {
-          const KryptoBird = await contract.KryptoBird(i - 1);
-          result.push(KryptoBird);
+          result.push(await contract.KryptoBird(i - 1).call());
         }
+
       }
     }
 
