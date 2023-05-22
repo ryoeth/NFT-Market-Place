@@ -1,10 +1,9 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import detectEthereumProvider from '@metamask/detect-provider'
 import Web3 from 'web3'
 import Navbar from './components/Navbar'
 import KryptoBird from './abis/KryptoBirdz.json'
 import './App.css'
-import { useState } from 'react'
 
 function App() {
 
@@ -15,12 +14,19 @@ function App() {
     totalSupply: 0,
     KryptoBirdArray: []
   });
+  const [inputValue, setInputValue] = useState('');
 
   const mint = async (kryptoBird) => {
+    console.log(kryptoBird);
     await accountDetail.contract.mthods.mint(kryptoBird).send({ from: accountDetail.accounts })
       .once('receipt', (receipt) => {
         setAccountDetail(accountDetail => ({ ...accountDetail.KryptoBirdArray, ...kryptoBird }));
       })
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    mint(inputValue);
   }
 
   useEffect(() => {
@@ -52,6 +58,7 @@ function App() {
         const abi = KryptoBird.abi;
         const networkDataAdress = networkData.address;
         const contract = new window.web3.eth.Contract(abi, networkDataAdress);
+        console.log(contract)
         const totalSupply = await contract.methods.totalSupply().call();
         const updatedAccount = { accounts: data[0], totalSupply: totalSupply, contract: contract };
         setAccountDetail(accountDetails => ({ ...accountDetails, ...updatedAccount }));
@@ -60,7 +67,7 @@ function App() {
           result.push(await contract.KryptoBird(i - 1).call());
         }
         setAccountDetail(accountDetails => ({ ...accountDetails.KryptoBirdArray, ...result }));
-
+        console.log(contract, accountDetail)
       }
     }
 
@@ -70,14 +77,14 @@ function App() {
   return (
     <>
       <Navbar address={accountDetail.accounts} />
-      
-      <form className='form'>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Enter KryptoBird Name</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          <div id="emailHelp" class="form-text">We'll never share your kryptoBird with anyone else.</div>
+
+      <form className='form' onSubmit={handleSubmit}>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">Enter KryptoBird Name</label>
+          <input type="text" className="form-control" onChange={(e) => setInputValue(e.target.value)} />
+          <div id="emailHelp" className="form-text">We'll never share your kryptoBird with anyone else.</div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
 
     </>
