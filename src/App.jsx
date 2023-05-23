@@ -17,8 +17,8 @@ function App() {
   const [inputValue, setInputValue] = useState('');
 
   const mint = async (kryptoBird) => {
-    console.log(kryptoBird);
-    await accountDetail.contract.mthods.mint(kryptoBird).send({ from: accountDetail.accounts })
+    console.log(typeof(kryptoBird));
+    await accountDetail.contract.methods.mint(kryptoBird).send({ from: accountDetail.accounts })
       .once('receipt', (receipt) => {
         setAccountDetail(accountDetail => ({ ...accountDetail.KryptoBirdArray, ...kryptoBird }));
       })
@@ -46,7 +46,7 @@ function App() {
       // console.log(await window.web3);
       const acc = await window.web3.eth.getAccounts();
       const networkId = await window.web3.eth.net.getId();
-      console.log(networkId, acc[0])
+      // console.log(networkId, acc[0])
       return [acc[0], networkId];
     }
 
@@ -59,15 +59,21 @@ function App() {
         const networkDataAdress = networkData.address;
         const contract = new window.web3.eth.Contract(abi, networkDataAdress);
         console.log(contract)
-        const totalSupply = await contract.methods.totalSupply().call();
+
+        const totalSupply = await contract.methods.totalSupply().call()
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err))
+          
         const updatedAccount = { accounts: data[0], totalSupply: totalSupply, contract: contract };
         setAccountDetail(accountDetails => ({ ...accountDetails, ...updatedAccount }));
+
         let result = [];
         for (let i = 1; i < totalSupply; i++) {
           result.push(await contract.KryptoBird(i - 1).call());
         }
+
         setAccountDetail(accountDetails => ({ ...accountDetails.KryptoBirdArray, ...result }));
-        console.log(contract, accountDetail)
+        console.log(accountDetail)
       }
     }
 

@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 function Navbar(props) {
 	const navRef = useRef();
-
+	// console.log(props)
 	const showNavbar = () => {
 		navRef.current.classList.toggle("responsive_nav");
 	};
