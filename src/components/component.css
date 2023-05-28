@@ -88,3 +88,10 @@ nav {
 		font-size: 1.5rem;
 	}
 }
+
+.card{
+	margin: 0 auto;
+	margin-top: 40px;
+	max-height: 80px;
+	width: 25%;
+}

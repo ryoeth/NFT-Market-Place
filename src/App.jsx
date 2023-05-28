@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import detectEthereumProvider from '@metamask/detect-provider'
 import Web3 from 'web3'
 import Navbar from './components/Navbar'
+import KryptoCard from './components/KryptoCard'
 import KryptoBird from './abis/KryptoBirdz.json'
 import './App.css'
 
@@ -90,9 +91,10 @@ function App() {
           <input type="text" className="form-control" onChange={(e) => setInputValue(e.target.value)} />
           <div id="emailHelp" className="form-text">We'll never share your kryptoBird with anyone else.</div>
         </div>
-        <button type="submit" className="btn btn-primary">Submit</button>
+        <button type="submit" className="btn btn-primary">Mint</button>
       </form>
 
+      <KryptoCard accountDetail={accountDetail} />
     </>
   )
 }
