@@ -46,5 +46,3 @@ If you find any issues with this project or would like to contribute to its deve
 # Acknowledgements
 This project was inspired by the Building a Decentralized NFT Marketplace series by Nader Dabit.
 
-# Contact
-If you have any questions or comments about this project, please feel free to contact the project creator, Prayas kumar, at prayas7102@gmail.com.
